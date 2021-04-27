@@ -1,6 +1,0 @@
-com/example/controler/GreetingControler.java
- com.example.controler.GreetingControler
-com/example/AppInitializer.java
- com.example.AppInitializer
-com/example/AppConfiguration.java
- com.example.AppConfiguration
