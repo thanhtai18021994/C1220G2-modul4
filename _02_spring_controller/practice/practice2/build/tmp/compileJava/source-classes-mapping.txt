@@ -1,0 +1,18 @@
+com/example/service/StudentServiceImplement.java
+ com.example.service.StudentServiceImplement
+com/example/service/CRUDservice.java
+ com.example.service.CRUDservice
+com/example/repository/StudentRepositoryImplement.java
+ com.example.repository.StudentRepositoryImplement
+com/example/repository/CRUDrepository.java
+ com.example.repository.CRUDrepository
+com/example/repository/StudentRepository.java
+ com.example.repository.StudentRepository
+com/example/service/StudentService.java
+ com.example.service.StudentService
+com/example/model/Student.java
+ com.example.model.Student
+com/example/controllers/StudentController.java
+ com.example.controllers.StudentController
+com/example/controllers/ValidateEmailController.java
+ com.example.controllers.ValidateEmailController

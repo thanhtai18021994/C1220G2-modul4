@@ -11,6 +11,11 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Helllo</h1>
+<h1>Helllo ${myName}</h1>
+<form action="/a" method="post">
+    <lable>VND:<input type="number" name="vnd"></lable>
+    <lable>USD:<input type="text" value="${money}"></lable>
+    <input type="submit" value="Submit">
+</form>
 </body>
 </html>
