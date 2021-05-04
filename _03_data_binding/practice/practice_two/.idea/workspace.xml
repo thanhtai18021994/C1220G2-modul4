@@ -5,81 +5,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c3b1dcf1-5084-430f-a0d4-7a3358821b17" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../practice_four/.gradle/6.8/executionHistory/executionHistory.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/.gradle/6.8/executionHistory/executionHistory.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/.gradle/6.8/fileChanges/last-build.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/.gradle/6.8/fileHashes/fileHashes.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/.gradle/6.8/fileHashes/fileHashes.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/.gradle/6.8/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/.gradle/checksums/checksums.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/.gradle/configuration-cache/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/.gradle/vcs-1/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/.idea/modules/practice_four.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/build/tmp/war/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/src/main/java/com/codegym/controllers/MailBoxController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/src/main/java/com/codegym/model/MailBox.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/src/main/java/com/codegym/repository/Data.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/src/main/webapp/WEB-INF/views/index.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/src/main/webapp/WEB-INF/views/update.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_four/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_one/.idea/modules/practice_one.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_one/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_one/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_one/src/main/java/com/example/controllers/EmployeeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_one/src/main/java/com/example/model/Employee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_one/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_one/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_one/src/main/webapp/WEB-INF/views/create.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_one/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_three/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_three/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_three/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_three/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_three/.idea/modules/practice_three.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_three/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_three/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_three/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_three/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../practice_three/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries-with-intellij-classes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/practice_two.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/controllers/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Login.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/model/UserDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/display.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/error.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../_02_spring_controller/excercise/ex1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../_02_spring_controller/excercise/ex1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/.gradle/6.8/executionHistory/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/.gradle/6.8/executionHistory/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/.gradle/6.8/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/.gradle/6.8/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/.gradle/6.8/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/.gradle/6.8/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/.gradle/6.8/javaCompile/classAnalysis.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/.gradle/6.8/javaCompile/javaCompile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/.gradle/6.8/javaCompile/taskHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/.gradle/checksums/checksums.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/.gradle/configuration-cache/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/.gradle/vcs-1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/.idea/modules/practice_four.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/build/classes/java/main/com/codegym/controllers/MailBoxController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/build/classes/java/main/com/codegym/model/MailBox.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/build/classes/java/main/com/codegym/repository/Data.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/build/libs/practice_four-1.0-SNAPSHOT.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/build/tmp/war/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/src/main/java/com/codegym/controllers/MailBoxController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/src/main/java/com/codegym/model/MailBox.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/src/main/java/com/codegym/repository/Data.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/src/main/webapp/WEB-INF/applicationContext.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/src/main/webapp/WEB-INF/dispatcher-servlet.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/src/main/webapp/WEB-INF/views/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/src/main/webapp/WEB-INF/views/update.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../practice_four/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,6 +124,19 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Tomcat 9.0.21" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.21" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -332,7 +314,7 @@
       <workItem from="1619623937885" duration="1293000" />
       <workItem from="1619649979065" duration="798000" />
       <workItem from="1619650807226" duration="9570000" />
-      <workItem from="1619686664745" duration="1456000" />
+      <workItem from="1619686664745" duration="1500000" />
     </task>
     <servers />
   </component>
