@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h2>LIST CATEGORY</h2>
+    <div> <button class="btn btn-primary"><a th:href="@{/product/get-create}" style="color: white">Add</a></button></div>
+    <form action="/product/search" method="post" class="">
+        <div class="row">
+            <div class="col">
+                <lable for="price1" >From</lable><input type="text" class="form-control" id="price1" placeholder="Enter price" name="price1">
+            </div>
+            <div class="col">
+                <lable for="price2" >To</lable>
+                <input id="price2" type="text" class="form-control" placeholder="Enter price" name="price2">
+            </div>
+        </div>
+        <div class="row">
+            <lable for="name" >To</lable>
+            <input id="name" type="text" class="form-control" placeholder="Enter price" name="price2">
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Search</button>
+    </form>
+
+    <table  class="table table-hover">
+        <tr>
+            <th>STT</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price($)</th>
+            <th>Color</th>
+            <th>Amount</th>
+            <th>Category</th>
+            <th width="150px">Description</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <th:block th:each="row,stat : ${products.getContent()}">
+            <tr>
+                <th th:text="${stat.count}"></th>
+                <td><img th:src="@{/image/{image}(image=${row.productDetail.image})}" width="150px"></td>
+                <td th:text="${row.name}"></td>
+                <td th:text="${row.price}"></td>
+                <td th:text="${row.color}"></td>
+                <td th:text="${row.amount}"></td>
+                <td th:text="${row.category.name}"></td>
+                <td th:text="${row.productDetail.discription}"></td>
+                <td><a th:href="@{/product/get-update/id(id=${row.id})}">Update</a></td>
+                <td><a th:href="@{/product/delete/id(id=${row.id})}">Delete</a></td>
+            </tr>
+        </th:block>
+    </table>
+
+    <div class="mb-2">
+        <a th:href="@{'/product'(page=${products.number - 1})}" th:if="${products.hasPrevious()}">Previous</a>
+        <span th:text="${products.number+1}"></span>/<span th:text="${products.totalPages}"></span>
+        <a th:href="@{'/product'(page=${products.number+1})}" th:if="${products.hasNext()}">Next</a>
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+</body>
+</html>
