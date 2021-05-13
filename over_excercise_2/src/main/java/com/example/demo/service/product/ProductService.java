@@ -1,5 +1,6 @@
 package com.example.demo.service.product;
 
+import com.example.demo.entity.Category;
 import com.example.demo.entity.Product;
 import com.example.demo.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,4 +51,18 @@ public class ProductService implements IProductService {
     public Page<Product> searchBy(Double price1,Double price2,Pageable pageable){
        return productRepository.findByPriceBetween(price1,price2,pageable);
     }
+    public Page<Product> searchBy(String name ,String color ,Pageable pageable){
+        return productRepository.findByNameContainingAndColorContaining(name,color,pageable);
+    }
+
+    public Page<Product> searchBy(String name, Double price1,Double price2,String color,Category category,Pageable pageable){
+        return productRepository.findByNameContainingAndPriceBetweenAndColorContainingAndCategory(name,price1,price2,color,category,pageable);
+    }
+    public Page<Product> searchBy(String name,String color,Category category,Pageable pageable){
+        return productRepository.findByNameContainingAndColorContainingAndCategory(name,color,category,pageable);
+    }
+    public Page<Product> searchByCategory(Category category,Pageable pageable){
+        return productRepository.findByCategory(category,pageable);
+    }
+
 }

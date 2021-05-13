@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/bootstrap-4.6.0-dist/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+<body>
+<div class="box box-info">
+    <div class="box-header with-border">
+        <h3 class="box-title">Horizontal Form</h3>
+    </div>
+    <form class="form-horizontal" th:href="@{/create}" th:object="${user}" method="post">
+        <div class="box-body">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
+
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputEmail3" placeholder="Name" th:field="*{name}">
+                    <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">Phone</label>
+
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputPassword3" placeholder="Password" th:field="*{phone}">
+                    <td th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Name Error</td>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="col-sm-2 control-label">Email</label>
+
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="email" placeholder="Password" th:field="*{email}">
+                    <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name Error</td>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="age" class="col-sm-2 control-label">Age</label>
+
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="age" placeholder="Password" th:field="*{age}">
+                    <td th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Name Error</td>
+                </div>
+            </div>
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+<!--            <button type="submit" class="btn btn-default">Cancel</button>-->
+            <button type="submit" class="btn btn-info pull-right">Sign in</button>
+        </div>
+        <!-- /.box-footer -->
+    </form>
+</div>
+<script th:src="@{/jquery/jquery-3.6.0.min.js}"></script>
+<script th:src="@{/bootstrap-4.6.0-dist/js/bootstrap.min.js}"></script>
+</body>
+</html>

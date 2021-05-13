@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/bootstrap-4.6.0-dist/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <button class="button btn-primary"><a th:href="@{/create}" class="text-md-center">ADD NEW USER</a></button>
+    <h2>Striped Rows</h2>
+    <p>The .table-striped class adds zebra-stripes to a table:</p>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>STT</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="row,stat :${list}">
+            <tr>
+                <td th:text="${stat.count}">John</td>
+                <td th:text="${row.name}">Doe</td>
+                <td th:text="${row.age}">john@example.com</td>
+                <td th:text="${row.email}">john@example.com</td>
+                <td th:text="${row.phone}">john@example.com</td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+</div>
+<script th:src="@{/jquery/jquery-3.6.0.min.js}"></script>
+<script th:src="@{/bootstrap-4.6.0-dist/js/bootstrap.min.js}"></script>
+</body>
+</html>
