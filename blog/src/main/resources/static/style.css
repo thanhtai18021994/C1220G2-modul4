@@ -1,0 +1,243 @@
+body {
+    background-color: white;
+}
+
+
+/* -----------------navbar---------------- */
+
+.navbar {
+    margin-top: 20px;
+}
+
+.navbar-list {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: white;
+    list-style: none;
+    color: rgb(53, 155, 155);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 200px;
+}
+
+.navbar-item {
+    display: block;
+    width: 120px;
+    height: 40px;
+    border: 2px solid rgb(53, 155, 155);
+    margin-left: 12px;
+    line-height: 40px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.navbar-item:hover {
+    background-color: rgb(53, 155, 155);
+    color: white;
+    cursor: pointer;
+}
+.navbar-item:hover a{
+    color: white;
+}
+
+
+/* ------------------sidebar-------------- */
+
+.sidebar {
+    background-color: white;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    border-right: 2px solid #ccc;
+}
+
+.sidebar-header {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-bottom: 2px solid #ccc;
+}
+
+.header-image {}
+
+.header-image>img {
+    width: 120px;
+    height: 120px;
+    border-radius: 120px;
+    display: block;
+}
+
+.header-infor {
+    display: block;
+    color: rgb(16, 122, 122);
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.full-name {
+    color: black;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.sidebar-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.sidebar-item {
+    background-clip: border-box;
+    display: block;
+    height: 60px;
+    width: 100%;
+    font-size: 18px;
+    font-family: 'Roboto Condensed', sans-serif;
+    /* padding-left: 12px; */
+    border-bottom: 2px solid #ccc;
+    line-height: 60px;
+}
+
+.sidebar-item a {
+    text-decoration: none;
+    color: black;
+    height: 100%;
+    width: 100%;
+    display: block;
+    padding-left: 50px;
+}
+
+.sidebar-item a:hover {
+    color: white;
+    background: rgb(53, 155, 155);
+    background-clip: border-box;
+}
+
+.content {
+    background-color: #666;
+}
+
+
+/* -------------------end-sidebar------------------ */
+
+
+/* --------------------filter----------------------- */
+
+.home-filter_btn {
+    min-width: 124px;
+    height: 34px;
+    text-decoration: none;
+    border: none;
+    border-radius: 2px;
+    font-size: 15px;
+    padding: 0 12px;
+    cursor: pointer;
+    outline: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 16px;
+    background-color: white;
+    margin-right: 12px;
+}
+
+.home-filter_btn-primary {
+    background-color: rgb(16, 122, 122);
+}
+
+.home-filter {
+    background-color: rgba(0, 0, 0, 0.04);
+    display: flex;
+    align-items: center;
+}
+
+.home-filter_pageable {
+    display: flex;
+    align-items: center;
+    padding: 12px 22px;
+}
+
+.home-filter_lable {
+    font-size: 14px;
+    color: rgb(53, 48, 48);
+    margin-right: 16px;
+    font-weight: 600;
+    margin-left: 12px;
+}
+
+.home-filter_select {
+    height: 34px;
+    padding: 0 12px;
+    border-radius: 2px;
+    background-color: white;
+    min-width: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home-filter_select-lable {
+    font-size: 14px;
+}
+
+
+/* --------------------end-filter------------------- */
+
+.personal-card {
+    padding: 20px;
+    width: 100%;
+    box-shadow: 0 0 10px 2px #ccc;
+    background-color: white;
+}
+
+.personal-card_image>img {
+    width: 100%;
+    height: 300px;
+}
+
+.personal-card_title {
+    margin-top: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+    color: #0a0202;
+}
+
+.personal-card_content {
+    height: 72px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre-line;
+}
+
+.personal-card_button {
+    height: 30px;
+}
+/*---------------view---------------*/
+.view-body {
+    width: 100%;
+}
+
+.view-image {
+    margin-top: 24px;
+    width: 92%;
+    display: block;
+    position: relative;
+    margin-left: 20px;
+}
+
+.view-title {
+    font-weight: 900;
+    margin-top: 20px;
+}
+
+.view-content {}

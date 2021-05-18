@@ -15,5 +15,4 @@ public interface ProductRepository extends JpaRepository<Product,Integer> {
     Page<Product> findByNameContainingAndColorContainingAndCategory(String name, String color,Category category,Pageable pageable);
     Page<Product> findByCategory(Category category,Pageable pageable);
     Page<Product> findByNameContaining(String  text,Pageable pageable);
-
 }

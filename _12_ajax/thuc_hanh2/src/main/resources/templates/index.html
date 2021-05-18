@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ajax Paging Table</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/table.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-7"
+             style="background-color: #e6f9ff; margin: 10px; padding: 10px; border-radius: 5px">
+
+            <h5>Do you want sorting by salary?</h5>
+            <button id="sortingbtn" class="btn btn-primary" disabled>Sort Now</button>
+            <hr>
+
+            <div class="form-group">
+                <form action="">
+                    <lable>first name <input type="text" id="firsName"></lable><br>
+                    <lable>last name <input type="text" id="lastName"></lable><br>
+                    <lable>age  <input type="text" id="age"></lable><br>
+                    <lable>salary <input type="text" id="salary"></lable><br>
+                    <lable>copy right <input type="text" id="copyright"></lable><br>
+                    <input type="button" value="submit" onclick="addNewCustomer()">
+                </form>
+            </div>
+
+            <table id="customerTable" class="table table-hover table-sm" >
+                <thead class="thead-dark">
+                <tr>
+                    <th>STT</th>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Age</th>
+                    <th>Salary</th>
+                    <th>Copyright By</th>
+                    <th>delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="row,stat : ${customers.getContent()}">
+                    <tr>
+                        <td th:text="${stat.count}"></td>
+                        <td th:text="${row.firstName}"></td>
+                        <td th:text="${row.lastName}"></td>
+                        <td th:text="${row.age}"></td>
+                        <td th:text="${row.salary}"></td>
+                        <td th:text="${row.copyRightBy}"></td>
+                        <td><a href="">delete</a></td>
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
+            <button id="viewmore" onclick="viewMore()">viewMore</button>
+        </div>
+    </div>
+</div>
+<script>
+    function addNewCustomer(){
+        let firstName=$('#firsName').val();
+        let lastName=$('#lastName').val();
+        let age=$('#age').val();
+        let salary=$('#salary').val();
+        let copyright=$('#copyright').val();
+        let json={
+            firstName:firstName,
+            lastName:lastName,
+            age:age,
+            salary:salary,
+            copyRightBy:copyright
+        }
+        $.ajax({
+            headers:{
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type:"post",
+            url:"/create",
+            data:JSON.stringify(json),
+            success:showCustomer()
+        })
+        event.preventDefault()
+    }
+    function showCustomer(){
+        $.ajax({
+            type:"get",
+            url:"/show" ,
+            success:function (data){
+                let content='<tr>\n' +
+                    '                    <th>STT</th>\n' +
+                    '                    <th>Firstname</th>\n' +
+                    '                    <th>Lastname</th>\n' +
+                    '                    <th>Age</th>\n' +
+                    '                    <th>Salary</th>\n' +
+                    '                    <th>Copyright By</th>\n' +
+                    '                    <th>delete</th>\n' +
+                    '                </tr>'
+                for (let i =0;i<data.length;i++){
+                    content+=('<tr>\n' +
+                        '                    <th>'+(i+1)+'</th>'+
+                        '                    <th>'+data[i].firstName+'</th>\n' +
+                        '                    <th>'+data[i].lastName+'</th>\n' +
+                        '                    <th>'+data[i].age+'</th>\n' +
+                        '                    <th>'+data[i].salary+'</th>\n' +
+                        '                    <th>'+data[i].copyRightBy+'</th>\n' +
+                        '                    <th><a href="'+data[i].id+'">delete</a></th>\n' +
+                        '                </tr>')
+                }
+                $('table').html(content);
+            }
+        })
+    }
+    function deletes(){
+
+            let content='<tr>\n' +
+                '                    <th>STT</th>\n' +
+                '                    <th>Firstname</th>\n' +
+                '                    <th>Lastname</th>\n' +
+                '                    <th>Age</th>\n' +
+                '                    <th>Salary</th>\n' +
+                '                    <th>Copyright By</th>\n' +
+                '                </tr>'
+            for (let i =0;i<data.length;i++){
+                content+=('<tr>\n' +
+                    '                    <th>'+(limit*5+1)+'</th>'+
+                    '                    <th>'+data[i].firstName+'</th>\n' +
+                    '                    <th>'+data[i].lastName+'</th>\n' +
+                    '                    <th>'+data[i].age+'</th>\n' +
+                    '                    <th>'+data[i].salary+'</th>\n' +
+                    '                    <th>'+data[i].copyRightBy+'</th>\n' +
+                    '                </tr>')
+            }
+    }
+
+    let limit=0;
+    function viewMore(){
+        limit+=1;
+            $.ajax({
+                type:"get",
+                url:`/show/${limit}`,
+
+                success:function (data){
+                    let content="";
+                    for (let i =0;i<data.length;i++){
+                        content+=('<tr>\n' +
+                            '                    <th>'+(limit*5+1+i)+'</th>'+
+                            '                    <th>'+data[i].firstName+'</th>\n' +
+                            '                    <th>'+data[i].lastName+'</th>\n' +
+                            '                    <th>'+data[i].age+'</th>\n' +
+                            '                    <th>'+data[i].salary+'</th>\n' +
+                            '                    <th>'+data[i].copyRightBy+'</th>\n' +
+                            '                </tr>')
+                    }
+                    if(content!=""){
+                        $('table').append(content);
+                    }else {
+                        $('#viewmore').hide();
+                    }
+
+                }
+            })
+    }
+</script>
+</body>
+</html>

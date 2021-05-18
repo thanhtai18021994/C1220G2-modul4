@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        function addnewuser() {
+            let name = $('#name').val();
+            let password = $('#password').val();
+            let newuser = {
+                name: name,
+                password: password,
+            };
+            $.ajax({
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                type: "post",
+                data: JSON.stringify(newuser),
+                url: "/api/create",
+                success: function () {
+                    $.ajax({
+                        type: "get",
+                        url: "/api/show",
+                        success: function (data) {
+                            let content = '  <tr>\n' +
+                                '        <td>Stt</td>\n' +
+                                '        <td>Name</td>\n' +
+                                '        <td>Password</td>\n' +
+                                '    </tr>';
+
+                            for (let i = 0; i < data.length; i++) {
+                                let b = '  <tr>\n' +
+                                    '        <td>'+i+'</td>\n' +
+                                    '        <td>'+data[i].name+'</td>\n' +
+                                    '        <td>'+data[i].password+'</td>\n' +
+                                    '    </tr>';
+                                content += b;
+                            }
+                            $('table').html(content);
+                        }
+                    })
+                }
+            })
+        };
+
+    </script>
+</head>
+<body>
+<table>
+    <tr>
+        <td>Stt</td>
+        <td>Name</td>
+        <td>Password</td>
+    </tr>
+    <th:block th:each="row,stat:${users}">
+        <tr>
+            <td th:text="${stat.count}"></td>
+            <td th:text="${row.name}"></td>
+            <td th:text="${row.password}"></td>
+        </tr>
+    </th:block>
+</table>
+<form action="#">
+    name<br>
+    <input type="text" id="name"><br>
+    password<br>
+    <input type="text" id="password"><br>
+    <input type="button" value="add" id="submit" onclick="addnewuser()">
+</form>
+</body>
+</html>
