@@ -3,64 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>List Smartphone</title>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript">
 
-        function addNewSmartPhone() {
-            //lay du lieu
-            let producer = $('#producer').val();
-            let model = $('#model').val();
-            let price = $('#price').val();
-            let newSmartphone = {
-                producer: producer,
-                model: model,
-                price: price
-            };
-
-            // goi ajax
-            $.ajax({
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                type: "POST",
-                data: JSON.stringify(newSmartphone),
-                //tên API
-                url: "/smartphones",
-                success: successHandler
-
-            });
-            //chặn sự kiện mặc định của thẻ
-            event.preventDefault();
-        }
-
-        function successHandler() {
-            $.ajax({
-                type: "GET",
-                //tên API
-                url: "/smartphones",
-                //xử lý khi thành công
-                success: function (data) {
-                    // hien thi danh sach o day
-                    let content = '    <tr>\n' +
-                        '        <td>Producer</td>\n' +
-                        '        <td>Model</td>\n' +
-                        '        <td>Price</td>\n' +
-                        '        <td>Delete</td>\n' +
-                        '    </tr>';
-                    for (let i = 0; i < data.length; i++) {
-                        content += getSmartphone(data[i]);
-                    }
-                    document.getElementById('smartphoneList').innerHTML = content;
-                }
-            });
-        }
-
-        function getSmartphone(smartphone) {
-            return `<tr><td >${smartphone.producer}</td><td >${smartphone.model}</td><td >${smartphone.price}</td>` +
-                `<td><a class="deleteSmartphone" href="${smartphone.id}">Delete</a></td></tr>`;
-        }
-    </script>
 </head>
 <body>
 <form id="add-smartphone">
@@ -90,15 +33,67 @@
         <td>Model</td>
         <td>Price</td>
         <td>Delete</td>
+        <td>update</td>
     </tr>
     <th:block th:each="smartphone: ${smartphones}">
         <tr>
             <td th:text="${smartphone.producer}"></td>
             <td th:text="${smartphone.model}"></td>
             <td th:text="${smartphone.price}"></td>
-            <td><a class="deleteSmartphone" th:href="${smartphone.getId()}">Delete</a></td>
+            <td><button class="deleteSmartphone" th:value="${smartphone.id}">Delete</button></td>
+            <td><button class="updatesmartphone" th:value="${smartphone.id}">update</button></td>
         </tr>
     </th:block>
 </table>
+<div id="update"></div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function (){
+        $('.updatesmartphone').click(function (){
+            let idsmartphone=$(this).val();
+            console.log(idsmartphone);
+            $.ajax({
+                type:'get',
+                url:`/update/${idsmartphone}`,
+                success:function (data){
+                    $('#update').html(data);
+                }
+            })
+            event.preventDefault();
+        })
+        $('#submit').click(function (){
+            let procedur=$('#producer').val();
+            let model=$('#model').val();
+            let price=$('#price').val();
+            let id=$('#id').val();
+            console.log(procedur,model,price,id)
+            let json={
+                id:id,
+                procedur:procedur,
+                model:model,
+                price:price
+            }
+            $.ajax({
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                url:'/smartphone/update',
+                type:'get',
+                data:JSON.stringify(json),
+                success:function (data){
+                    $.ajax({
+                        url:"/list",
+                        type:'get',
+                        success:alert("update successfull !!!")
+                    })
+                }
+            })
+            event.preventDefault();
+        })
+    })
+
+</script>
 </body>
 </html>

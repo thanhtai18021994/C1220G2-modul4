@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block th:each="row: ${blogs}">
+    <div class="col-3 ">
+        <div class="personal-card">
+            <div class="personal-card_image"><img th:src="@{/image/{image}(image=${row.image})}" alt=""></div>
+            <div class="personal-card_title" th:text="${row.title}">Cuộc Sống Bình Yên</div>
+            <div class="personal-card_date" th:text="${row.date}">18/02/2020</div>
+            <div class="personal-card_content" th:text="${row.content}">Nếu nói yêu em là sai thì anh nguyện đi ở tù, nếu ở bên em là cay đắng thì anh xin nguyện bỏ đồ ngọt và nếu như còn có gì nếu nữa thì anh vẫn nếu dẫu biết rằng răng cần nếu nhưng vẫn nếu </div>
+            <div class="personal-card_button"><button><a th:href="@{/view/{id}(id=${row.id})}">View More</a></button></div>
+        </div>
+        <a href="" style="position: absolute;top: 0;right: 15px;display: block;width: 30px;height: 20px;text-decoration: none;">
+            <span style=" width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;">
+                <i style="font-size: 24px;color:#737373" class="fas fa-ellipsis-h"></i>
+            </span>
+        </a>
+        <div id="action-content">
+            <a href=""><span><i class="far fa-trash-alt"></i></span>Update</a>
+            <a href=""><span><i class="fas fa-pen"></i></span>Delete</a>
+        </div>
+    </div>
+</th:block>
+</body>
+</html>

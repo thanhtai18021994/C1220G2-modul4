@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 import com.example.demo.model.SmartPhone;
 import com.example.demo.service.ISmartPhoneService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,10 +27,9 @@ public class SmartPhoneController {
         return new ResponseEntity<>(smartPhoneService.save(smartphone), HttpStatus.CREATED);
     }
 
-    @GetMapping("/list")
-    public ModelAndView getAllSmartphonePage() {
-        ModelAndView modelAndView = new ModelAndView("/list");
-        modelAndView.addObject("smartphones", smartPhoneService.findAll());
-        return modelAndView;
+    @GetMapping("/update")
+    public ResponseEntity<SmartPhone> updatePhone(@RequestBody SmartPhone smartPhone){
+        return new ResponseEntity<>(smartPhoneService.save(smartPhone),HttpStatus.OK);
     }
+
 }

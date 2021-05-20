@@ -110,33 +110,12 @@
                         '                    <th>'+data[i].age+'</th>\n' +
                         '                    <th>'+data[i].salary+'</th>\n' +
                         '                    <th>'+data[i].copyRightBy+'</th>\n' +
-                        '                    <th><a href="'+data[i].id+'">delete</a></th>\n' +
+                        '                    <th><a class="deleteInfor" href="'+data[i].id+'">delete</a></th>\n' +
                         '                </tr>')
                 }
                 $('table').html(content);
             }
         })
-    }
-    function deletes(){
-
-            let content='<tr>\n' +
-                '                    <th>STT</th>\n' +
-                '                    <th>Firstname</th>\n' +
-                '                    <th>Lastname</th>\n' +
-                '                    <th>Age</th>\n' +
-                '                    <th>Salary</th>\n' +
-                '                    <th>Copyright By</th>\n' +
-                '                </tr>'
-            for (let i =0;i<data.length;i++){
-                content+=('<tr>\n' +
-                    '                    <th>'+(limit*5+1)+'</th>'+
-                    '                    <th>'+data[i].firstName+'</th>\n' +
-                    '                    <th>'+data[i].lastName+'</th>\n' +
-                    '                    <th>'+data[i].age+'</th>\n' +
-                    '                    <th>'+data[i].salary+'</th>\n' +
-                    '                    <th>'+data[i].copyRightBy+'</th>\n' +
-                    '                </tr>')
-            }
     }
 
     let limit=0;

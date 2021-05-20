@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+
+    <form action="">
+        <input type="hidden" th:value="${smartphone.id}" id="id"></input>
+       <lable>producer<input type="text" th:value="${smartphone.producer}" id="producer"></lable> <br>
+        <lable>model<input type="text" th:value="${smartphone.model}" id="model"></lable><br>
+        <lable>price<input type="text" th:value="${smartphone.price}" id="price"></lable><br>
+        <input type="button" value="update" id="submit">
+    </form>
+
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+</body>
+</html>

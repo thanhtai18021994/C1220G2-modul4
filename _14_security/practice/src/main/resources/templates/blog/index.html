@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" th:href="@{/fontawesome-free-5.15.1-web/fontawesome-free-5.15.1-web/css/all.min.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/bootstrap-4.6.0-dist/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container-fluid row">
+        <div class="col-2 sidebar">
+            <header class="sidebar-header ">
+                <div class="header-image">
+                    <img src="./image/tai-anh-gai-xinh-de-thuong.jpg" alt=" " class="">
+                </div>
+                <div class="header-infor ">
+                    <p class="full-name ">NGUYỄN NGỌC MAI</p>
+                    <p class="email ">mainguyen2000@gmail.com</p>
+                    <p class="phone ">0775562914</p>
+                </div>
+            </header>
+            <section class="sidebar-body">
+                <ul class="sidebar-list">
+                    <li class="sidebar-item"><a href="#" data-toggle="modal" data-target="#myModal" id="login">ĐĂNG NHẬP</a></li>
+                    <li class="sidebar-item" ><a href="#" data-toggle="modal" data-target="#myModal" id="register_btn">ĐĂNG KÝ</a></li>
+                    <li class="sidebar-item"><a href="#">PROFILE</a></li>
+                    <li class="sidebar-item"><a href="#">HỈNH SỬA</a></li>
+                </ul>
+            </section>
+        </div>
+        <div class="col-10">
+            <div class="row container-fluid">
+                <nav class="navbar">
+                    <ul class="navbar-list">
+                        <li class="navbar-item">TÂM SỰ</li>
+                        <li class="navbar-item">VĂN HÓA</li>
+                        <li class="navbar-item">ẨM THỰC</li>
+                        <li class="navbar-item">DU LỊCH</li>
+                        <li class="navbar-item"><i class="fas fa-plus"></i><a th:href="@{/create}" style="text-decoration: none">ADD</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="row container-fluid mt-4" style="padding: 0 30px">
+                <div class="home-filter w-100">
+                    <span class="home-filter_lable">
+                        Sắp xếp theo
+                    </span>
+                    <button class="home-filter_btn home-filter_btn-primary">Mới nhất</button>
+                    <button class="home-filter_btn">Yêu thích</button>
+                    <button class="home-filter_btn">Phổ biến</button>
+                    <div class="home-filter_select mr-auto">
+                        <span class="home-filter_select-lable">Select</span>
+                        <i class="fas fa-angle-down"></i>
+                    </div>
+                    <div class="home-filter_pageable">
+                        <div class="search-navbar">
+                            <input type="text" class="search-narbar__input">
+                            <button class="search-navbar__icon"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row container-fluid" id="mainContent">
+                    <th:block th:each="row:${blogs}">
+                        <div class="col-3 ">
+                            <div class="personal-card">
+                                <div class="personal-card_image"><img th:src="@{/image/{image}(image=${row.image})}" alt=""></div>
+                                <div class="personal-card_title" th:text="${row.title}">Cuộc Sống Bình Yên</div>
+                                <div class="personal-card_date" th:text="${row.date}">18/02/2020</div>
+                                <div class="personal-card_content" th:text="${row.content}">Nếu nói yêu em là sai thì anh nguyện đi ở tù, nếu ở bên em là cay đắng thì anh xin nguyện bỏ đồ ngọt và nếu như còn có gì nếu nữa thì anh vẫn nếu dẫu biết rằng răng cần nếu nhưng vẫn nếu </div>
+                                <div class="personal-card_button"><button><a th:href="@{/view/{id}(id=${row.id})}">View More</a></button></div>
+                            </div>
+                            <a href="" style="position: absolute;top: 0;right: 15px;display: block;width: 30px;height: 20px;text-decoration: none;">
+                                <span style=" width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;">
+                                    <i style="font-size: 24px;color:#737373" class="fas fa-ellipsis-h"></i>
+                                </span>
+                            </a>
+                            <div id="action-content">
+                               <a href=""><span><i class="far fa-trash-alt"></i></span>Update</a>
+                                <a href=""><span><i class="fas fa-pen"></i></span>Delete</a>
+                            </div>
+                        </div>
+                    </th:block>
+            </div>
+            <div class="row container-fluid">
+                <nav class="navbar" style="padding-left: 300px">
+                    <ul class="navbar-list">
+                        <li id="viewmore" class="navbar-item">Xem thêm</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+<!--    ---------------------modal------------------>
+
+    <div class="container">
+        <!-- The Modal -->
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title ">LOGING</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body" id="form_content">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- ------------------    end modal----------------->
+<!--    -------------------login-modal--------------->
+
+<!-------------------------end-login-modal----------->
+    <script th:src="@{/jquery/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js}"></script>
+    <script th:src="@{/bootstrap-4.6.0-dist/js/bootstrap.min.js}"></script>
+    <script type="text/javascript">
+                $(document).ready(function (){
+                    let num=0;
+                   $('#viewmore').click(function (){
+                       num+=1;
+                       $.ajax({
+                           type:'get',
+                           url:`/${num}`,
+                           success:function (data){
+                               $('#mainContent').append(data);
+                           }
+                       })
+                       event.preventDefault();
+                   })
+                    $('#login').click(function (){
+                        $.ajax({
+                            type:'get',
+                            url:'/login',
+                            success:function (data){
+                                $('#form_content').prepend(data)
+                            }
+                        })
+                    })
+
+                    $('#register_btn').click(function (){
+                        $.ajax({
+                            type:'get',
+                            url:'/register',
+                            success:function (data){
+                                $('#form_content').prepend(data)
+                            }
+                        })
+                        event.preventDefault()
+                    })
+                });
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <div class="login-box-body">
+        <h4 class="login-box-msg">
+        </h4>
+        <form th:action="@{/register}" th:object="${register}" method="post">
+            <div class="form-group">
+                <label for="exampleInputName">Full Name</label>
+                <input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp" th:field="*{fullName}">
+                <small id="nameHelp" class="form-text text-muted" ></small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" th:field="*{email}">
+                <small id="emailHelp" class="form-text text-muted" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword" th:field="*{password}">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Retype Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" th:field="*{matchingPassword}">
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" >
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script th:src="@{//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js}"></script>
+<script>
+    $(document).ready(function (){
+        let content=$('#emailHelp').text();
+        if (content!=""){
+            
+        }
+    })
+</script>
+</body>
+</html>
