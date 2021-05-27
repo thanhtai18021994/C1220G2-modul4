@@ -38,7 +38,7 @@ public class ProductController {
         model.addAttribute("object",productService.findById(id).get());
         return "/product/view";
     }
-@PostMapping("/save")
+    @PostMapping("/save")
     public String save(@RequestParam("id") Long id,@RequestParam("amount") int amount, @ModelAttribute("cart") Cart cart,Model model) {
                   Product product= productService.findById(id).get();
             product.setAmount(amount);

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{homepage/index::header}">
+
+</head>
+
+<body>
+<nav class="navbar navbar-dark bg-dark fixed-top"  th:replace="~{homepage/index::navbar}">
+</nav>
+<div class="container-fluid row p-0 m-0">
+    <div class="col-2 sidebar" style="padding: 0;" th:replace="~{homepage/index::sidebar}">
+    </div>
+    <div class="col-10 p-0">
+        <div class="container-fluid bg-light pt-3 pb-3" th:fragment="process-bar">
+            <span>Admin</span>
+            <span><i class="fas fa-chevron-right"></i></span><span>Nhân Viên</span>
+            <span><i class="fas fa-chevron-right"></i></span><span>Thêm mới</span>
+        </div>
+        <div class="container-fluid">
+            <button class="addnew"><a th:href="@{/service}"><span><i class="fas fa-list"></i></span>Danh Sách Khách Hàng</a></button>
+        </div>
+        <div class="container mt-3" style="padding: 40px;">
+            <h4 class="font-weight-bold"> THÊM MỚI DỊCH VỤ</h4>
+            <form th:action="@{/service/create}" method="post" th:object="${service}" class="mt-3">
+                <div class="form-row">
+                    <div class="form-group col-4">
+                        <label for="inputCity" class="font-weight-bold">Tên Dịch Vụ</label>
+                        <input type="text" class="form-control" id="inputCity" placeholder="VD:Resort-R18" th:field="*{serviceName}">
+                        <small class="text-danger" th:if="${#fields.hasErrors('serviceName')}" th:errors="*{serviceName}"></small>
+                    </div>
+                    <div class="form-group col-4">
+                        <label for="area" class="font-weight-bold">Diện Tích(m <sup>2</sup>)</label>
+                        <input type="text" class="form-control" id="area" th:field="*{serviceArea}" placeholder="VD:30.2">
+                        <small class="text-danger " th:if="${#fields.hasErrors('serviceArea')}" th:errors="*{serviceArea}"></small>
+                    </div>
+
+                    <div class="form-group col-4">
+                        <label for="code" class="font-weight-bold">Mã Dịch Vụ</label>
+                        <input type="text" class="form-control" id="code" placeholder="VD: DV-0001" th:field="*{codeService}">
+                        <small class="text-danger " th:if="${#fields.hasErrors('codeService')}" th:errors="*{codeService}"></small>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-3">
+                        <label for="inputEmail4" class="font-weight-bold">Số Người Tối Đa</label>
+                        <input type="email" class="form-control" id="inputEmail4" placeholder="VD:taibui18021994@gmail.com" th:field="*{serviceMaxPeople}">
+                        <small class="text-danger" th:if="${#fields.hasErrors('serviceMaxPeople')}" th:errors="*{serviceMaxPeople}"></small>
+                    </div>
+                    <div class="form-group col-3">
+                        <label for="inputPassword4" class="font-weight-bold">Tiêu Chuẩn</label>
+                        <input type="text" class="form-control" id="inputPassword4" placeholder="VD:0775562914" th:field="*{standardRoom}">
+                        <small class="text-danger " th:if="${#fields.hasErrors('standardRoom')}" th:errors="*{standardRoom}"></small>
+                    </div>
+                    <div class="form-group col-3">
+                        <label for="idCard" class="font-weight-bold">Diện Tích Hồ Bơi</label>
+                        <input type="text" class="form-control" id="idCard" placeholder="VD:191830363" th:field="*{poolArea}">
+                        <small class="text-danger " th:if="${#fields.hasErrors('poolArea')}" th:errors="*{poolArea}"></small>
+                    </div>
+                    <div class="form-group col-3">
+                        <label for="serviceName" class="font-weight-bold">Số Tầng</label>
+                        <input type="text" class="form-control" id="serviceName" placeholder="VD:Resort-R18" th:field="*{numberOfFloor}">
+                        <small class="text-danger" th:if="${#fields.hasErrors('numberOfFloor')}" th:errors="*{numberOfFloor}"></small>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-4">
+                        <label for="birthday" class="font-weight-bold">Giá</label>
+                        <input type="date" class="form-control" id="birthday" th:field="*{serviceCost}">
+                        <small class="text-danger " th:if="${#fields.hasErrors('serviceCost')}" th:errors="*{serviceCost}"></small>
+                    </div>
+                    <div class="form-group col-4">
+                        <label for="typeCustomer" class="font-weight-bold">Kiểu Thuê</label>
+                        <select class="custom-select" id="typeCustomer" th:field="*{rentType}">
+                            <th:block th:each="row:${rentType}">
+                                <option th:text="${row.rentTypeName}" th:value="${row.rentTypeId}">One</option>
+                            </th:block>
+                        </select>
+                    </div>
+                    <div class="form-group col-4">
+                        <label for="servicetype" class="font-weight-bold">Loại Khách</label>
+                        <select class="custom-select" id="servicetype" th:field="*{serviceType}">
+                            <th:block th:each="row:${typeService}">
+                                <option th:text="${row.serviceTypeName}" th:value="${row.serviceTypeId}">One</option>
+                            </th:block>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-12">
+                        <label for="descript" class="font-weight-bold">Mô Tả Dịch Vụ Di Kèm</label>
+                        <textarea rows="5" class="form-control" th:field="*{descriptionOtherConvenience}" id="descript"></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Thêm mới</button>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="~{homepage/index::footer}">
+
+</footer>
+<script type="text/javascript">
+    $(document).ready(function (){
+        if($(".text-danger").text()!=""){
+            $(".text-danger").prev().attr('class','form-control input-false')
+        }
+        $("small").prev().blur(function() {
+            $(this).attr('class','form-control')
+            $(this).next().text("")
+        })
+    })
+</script>
+</body>
+
+</html>

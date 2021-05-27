@@ -40,7 +40,6 @@
             </form>
             <button class="btn btn-primary form-control mt-3"><a th:href="@{/product}" style="color: white">LIST PRODUCT</a></button>
         </div>
-
     </div>
     <div class="col-9">
         <h2>LIST CATEGORY</h2>
@@ -72,13 +71,11 @@
                 </tr>
             </th:block>
         </table>
-
         <div class="mb-2">
             <a th:href="@{'/product'(page=${products.number - 1},price1=${price1},price2=${price2},name=${name},color=${color},category=${category})}" th:if="${products.hasPrevious()}">Previous</a>
             <span th:text="${products.number+1}"></span>/<span th:text="${products.totalPages}"></span>
             <a th:href="@{'/product'(page=${products.number + 1},price1=${price1},price2=${price2},name=${name},color=${color},category=${category})}" th:if="${products.hasNext()}">Next</a>
         </div>
-
     </div>
 </div>
 <script th:src="@{/jquery/jquery-3.6.0.min.js}"></script>

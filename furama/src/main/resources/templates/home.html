@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+<div class="hero" th:style="'background-image:url(/image/image/background.png)'">
+    <div class="navbar">
+        <img th:src="@{/image/image/furama-logo.png}" alt="" class="logo">
+        <button type="button" class="sign-in"><a th:href="@{/login}">Đăng Nhập</a></button>
+    </div>
+    <div class="content">
+        <small>Wellcome to page</small>
+        <h1>ADMIN OF<br> FURAMA RESORT</h1>
+    </div>
+    <div class="bubbles">
+        <img th:src="@{/image/image/bubble.png}">
+        <img th:src="@{/image/image/bubble.png}">
+        <img th:src="@{/image/image/bubble.png}">
+        <img th:src="@{/image/image/bubble.png}">
+        <img th:src="@{/image/image/bubble.png}">
+        <img th:src="@{/image/image/bubble.png}">
+        <img th:src="@{/image/image/bubble.png}">
+    </div>
+</div>
+</body>
+
+</html>

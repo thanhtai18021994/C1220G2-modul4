@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{homepage/index::header}">
+
+</head>
+
+<body>
+<nav class="navbar navbar-dark bg-dark fixed-top"  th:replace="~{homepage/index::navbar}">
+</nav>
+<div class="container-fluid row p-0 m-0">
+    <div class="col-2 sidebar" style="padding: 0;" th:replace="~{homepage/index::sidebar}">
+    </div>
+    <div class="col-10 p-0">
+        <div class="container-fluid bg-light pt-3 pb-3" th:fragment="process-bar">
+            <span>Admin</span>
+            <span><i class="fas fa-chevron-right"></i></span><span>Nhân Viên</span>
+            <span><i class="fas fa-chevron-right"></i></span><span>Thêm mới</span>
+        </div>
+        <div class="container-fluid">
+            <button class="addnew"><a th:href="@{/customer}"><span><i class="fas fa-list"></i></span>Danh Sách Khách Hàng</a></button>
+        </div>
+        <div class="container-fluid mt-3" style="padding: 40px;">
+            <h4 class="font-weight-bold"> THÊM MỚI KHÁCH HÀNG</h4>
+            <form th:action="@{/customer/update}" method="post" th:object="${customer}" class="mt-3">
+                <div class="form-row">
+                    <div class="form-group col-6">
+                        <label for="inputCity" class="font-weight-bold">Họ Và Tên</label>
+                        <input type="text" class="form-control" id="inputCity" placeholder="VD:Nguyễn Văn A" th:value="*{customerName}" th:field="*{customerName}">
+                        <small class="text-danger" th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}"></small>
+                    </div>
+                    <div class="form-group col-3">
+                        <label for="birthday" class="font-weight-bold">Ngày Sinh</label>
+                        <input type="date" class="form-control" id="birthday" th:value="*{customerBirthday}" th:field="*{customerBirthday}">
+                        <small class="text-danger" th:if="${#fields.hasErrors('customerBirthday')}" th:errors="*{customerBirthday}"></small>
+                    </div>
+                    <div class="form-group col-3">
+                        <label for="code" class="font-weight-bold">Mã Khách Hàng</label>
+                        <input type="text" class="form-control" id="code" placeholder="VD: KH-0001" th:value="*{codeCustomer}" th:field="*{codeCustomer}">
+                        <small class="text-danger" th:if="${#fields.hasErrors('codeCustomer')}" th:errors="*{codeCustomer}"></small>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputEmail4" class="font-weight-bold">Email</label>
+                        <input type="text" class="form-control" id="inputEmail4" placeholder="VD:taibui18021994@gmail.com" th:value="*{customerEmail}" th:field="*{customerEmail}">
+                        <small class="text-danger" th:if="${#fields.hasErrors('customerEmail')}" th:errors="*{customerEmail}"></small>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputPassword4" class="font-weight-bold">Số Điện Thoại</label>
+                        <input type="text" class="form-control" id="inputPassword4" placeholder="VD:0775562914" th:value="*{customerPhone}" th:field="*{customerPhone}">
+                        <small class="text-danger" th:if="${#fields.hasErrors('customerPhone')}" th:errors="*{customerPhone}"></small>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="idCard" class="font-weight-bold">Số CMND</label>
+                        <input type="text" class="form-control" id="idCard" placeholder="191830363" th:value="*{customerIdCard}" th:field="*{customerIdCard}">
+                        <small class="text-danger" th:if="${#fields.hasErrors('customerIdCard')}" th:errors="*{customerIdCard}"></small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-2 font-weight-bold">Giới Tính: </div>
+                    <div class="form-check col-1">
+                        <th:block th:switch="${customer.customerGender}">
+                            <input th:case="Nam" checked class="form-check-input" type="radio" id="male" name="gender"  th:value="Nam" th:field="*{customerGender}">
+                            <input th:case="*" class="form-check-input" type="radio" id="male" name="gender"  th:value="Nam" th:field="*{customerGender}">
+                        </th:block>
+
+                        <label class="form-check-label" for="male">
+                            Nam
+                        </label>
+                    </div>
+                    <div class="form-check col-1 ">
+                        <th:block th:switch="${customer.customerGender}">
+                            <input th:case="Nữ" checked class="form-check-input" type="radio" id="female" name="gender"  th:value="Nữ" th:field="*{customerGender}">
+                            <input th:case="*" class="form-check-input" type="radio" id="female" name="gender"  th:value="Nữ" th:field="*{customerGender}">
+                        </th:block>
+                        <label class="form-check-label " for="female">
+                            Nữ
+                        </label>
+                    </div>
+                    <div class="form-check col-1">
+                        <th:block th:switch="${customer.customerGender}">
+                            <input th:case="Khác" checked class="form-check-input" type="radio" id="other" name="gender" th:value="Khác" th:field="*{customerGender}">
+                            <input th:case="*" class="form-check-input" type="radio" id="other" name="gender"  th:value="Khác" th:field="*{customerGender}">
+                        </th:block>
+                        <label class="form-check-label " for="other">
+                            Khác
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-6">
+                        <label for="inputAddress" class="font-weight-bold">Address</label>
+                        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" th:value="${customer.customerAddress}" th:field="*{customerAddress}">
+                        <small class="text-danger" th:if="${#fields.hasErrors('customerAddress')}" th:errors="*{customerAddress}"></small>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="typeCustomer" class="font-weight-bold">Loại Khách</label>
+                        <select class="custom-select" id="typeCustomer" th:field="*{customerType}">
+                            <th:block th:each="row:${typeCustomer}">
+                                <th:block th:switch="${row.customerTypeName}">
+                                    <option selected th:case="${customer.customerType.customerTypeName}" th:text="${row.customerTypeName}" th:value="${row.customerTypeId}">One</option>
+                                    <option th:case="*" th:text="${row.customerTypeName}" th:value="${row.customerTypeId}">One</option>
+                                </th:block>
+                            </th:block>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign in</button>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+<footer th:replace="~{homepage/index::footer}">
+
+</footer>
+<script>
+    $(document).ready(function (){
+        if($(".text-danger").text()!=""){
+            $(".text-danger").prev().attr('class','form-control input-false')
+        }
+        $("small").prev().blur(function() {
+            $(this).attr('class','form-control')
+            $(this).next().text("")
+        })
+    })
+</script>
+</body>
+
+</html>

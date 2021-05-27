@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{homepage/index::header}">
+
+</head>
+
+<body>
+<nav class="navbar navbar-dark bg-dark fixed-top"  th:replace="~{homepage/index::navbar}">
+</nav>
+<div class="container-fluid row p-0 m-0">
+    <div class="col-2 sidebar" style="padding: 0;" th:replace="~{homepage/index::sidebar}">
+    </div>
+    <div class="col-10 p-0">
+        <div class="container-fluid bg-light pt-3 pb-3" th:fragment="process-bar">
+            <span>KHÁCH HÀNG</span>
+            <span><i class="fas fa-chevron-right"></i></span><span>DANH SÁCH</span>
+            <span><i class="fas fa-chevron-right"></i></span><span>CHI TIẾT</span>
+        </div>
+        <div class="container-fluid">
+            <button class="addnew"><a th:href="@{/customer}"><span><i class="fas fa-list"></i></span>Danh Sách Khách Hàng</a></button>
+        </div>
+        <div class="row container table-responsive " style="padding: 20px 40px;">
+            <h4></h4>
+            <table>
+                <tr>
+                    <th>Mã Khách Hàng </th>
+                    <td th:text="${object.codeCustomer}"></td>
+                </tr>
+                <tr>
+                    <th>Tên Khách Hàng </th>
+                    <td th:text="${object.customerName}"></td>
+                </tr>
+                <tr>
+                    <th>Ngày Sinh Khách Hàng </th>
+                    <td th:text="${object.customerBirthday}"></td>
+                </tr>
+                <tr>
+                    <th>Giới Tính Khách Hàng </th>
+                    <td th:text="${object.customerGender}"></td>
+                </tr>
+                <tr>
+                    <th>Số CMND Khách Hàng </th>
+                    <td th:text="${object.customerIdCard}"></td>
+                </tr>
+                <tr>
+                    <th>SDT Khách Hàng </th>
+                    <td th:text="${object.customerPhone}"></td>
+                </tr>
+                <tr>
+                    <th>Email Khách Hàng </th>
+                    <td th:text="${object.customerEmail}"></td>
+                </tr>
+                <tr>
+                    <th>Địa Chỉ Khách Hàng </th>
+                    <td th:text="${object.customerAddress}"></td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+</div>
+<footer th:replace="~{homepage/index::footer}">
+
+</footer>
+</body>
+
+</html>

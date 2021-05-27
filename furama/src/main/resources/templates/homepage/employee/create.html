@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{homepage/index::header}">
+
+</head>
+
+<body>
+<nav class="navbar navbar-dark bg-dark fixed-top"  th:replace="~{homepage/index::navbar}">
+</nav>
+<div class="container-fluid row p-0 m-0">
+    <div class="col-2 sidebar" style="padding: 0;" th:replace="~{homepage/index::sidebar}">
+    </div>
+    <div class="col-10 p-0">
+        <div class="container-fluid bg-light pt-3 pb-3" th:fragment="process-bar">
+            <span>Admin</span>
+            <span><i class="fas fa-chevron-right"></i></span><span>Nhân Viên</span>
+            <span><i class="fas fa-chevron-right"></i></span><span>Thêm mới</span>
+        </div>
+        <div class="container-fluid">
+            <button class="addnew"><a th:href="@{/employee}"><span><i class="fas fa-list"></i></span>Danh Sách Khách Hàng</a></button>
+        </div>
+        <div class="container-fluid mt-3" style="padding: 40px;">
+            <h4 class="font-weight-bold"> THÊM MỚI KHÁCH HÀNG</h4>
+            <form th:action="@{/employee/create}" method="post" th:object="${employee}" class="mt-3">
+                <div class="form-row">
+                    <div class="form-group col-3">
+                        <label for="inputCity" class="font-weight-bold">Họ Và Tên</label>
+                        <input type="text" class="form-control" id="inputCity" placeholder="VD:Nguyễn Văn A" th:field="*{employeeName}">
+                        <small class="text-danger" th:if="${#fields.hasErrors('employeeName')}" th:errors="*{employeeName}"></small>
+                    </div>
+                    <div class="form-group col-3">
+                        <label for="birthday" class="font-weight-bold">Ngày Sinh</label>
+                        <input type="date" class="form-control" id="birthday" th:field="*{employeeBirthday}">
+                        <small class="text-danger " th:if="${#fields.hasErrors('employeeBirthday')}" th:errors="*{employeeBirthday}"></small>
+                    </div>
+                    <div class="form-group col-3">
+                        <label for="code" class="font-weight-bold">Mã Khách Hàng</label>
+                        <input type="text" class="form-control" id="code" placeholder="VD: KH-0001" th:field="*{codeEmployee}">
+                        <small class="text-danger " th:if="${#fields.hasErrors('codeEmployee')}" th:errors="*{codeEmployee}"></small>
+                    </div>
+                    <div class="form-group col-3">
+                        <label for="image" class="font-weight-bold">Ảnh Đại Diện</label>
+                        <input type="file" class="form-control-file" id="image" placeholder="VD: KH-0001" name="image">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputEmail4" class="font-weight-bold">Email</label>
+                        <input type="text" class="form-control" id="inputEmail4" placeholder="VD:taibui18021994@gmail.com" th:field="*{employeeEmail}">
+                        <small class="text-danger" th:if="${#fields.hasErrors('employeeEmail')}" th:errors="*{employeeEmail}"></small>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputPassword4" class="font-weight-bold">Số Điện Thoại</label>
+                        <input type="text" class="form-control" id="inputPassword4" placeholder="VD:0775562914" th:field="*{employeePhone}">
+                        <small class="text-danger " th:if="${#fields.hasErrors('employeePhone')}" th:errors="*{employeePhone}"></small>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="idCard" class="font-weight-bold">Số CMND</label>
+                        <input type="text" class="form-control" id="idCard" placeholder="VD:191830363" th:field="*{employeeIdCard}">
+                        <small class="text-danger " th:if="${#fields.hasErrors('employeeIdCard')}" th:errors="*{employeeIdCard}"></small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-2 font-weight-bold">Giới Tính: </div>
+                    <div class="form-check col-1">
+                        <input class="form-check-input" type="radio" id="male" name="gender" th:value="Nam" th:field="*{employeeGender}">
+                        <label class="form-check-label" for="male">
+                            Nam
+                        </label>
+                    </div>
+                    <div class="form-check col-1 ">
+                        <input class="form-check-input" type="radio" id="female" name="gender" th:value="Nữ" th:field="*{employeeGender}">
+                        <label class="form-check-label " for="female">
+                            Nữ
+                        </label>
+                    </div>
+                    <div class="form-check col-1">
+                        <input class="form-check-input" type="radio" id="other" name="gender" th:value="Khác" th:field="*{employeeGender}">
+                        <label class="form-check-label " for="other">
+                            Khác
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-3">
+                        <label for="inputAddress" class="font-weight-bold">Address</label>
+                        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" th:field="*{employeeAddress}">
+                        <small class="text-danger " th:if="${#fields.hasErrors('employeeGender')}" th:errors="*{employeeGender}"></small>
+                    </div>
+                    <div class="form-group col-3">
+                        <label for="position" class="font-weight-bold">Loại Khách</label>
+                        <select class="custom-select" id="position" th:field="*{position}">
+                            <option value="null">-----select-----</option>
+                            <th:block th:each="row:${position}">
+                                <option th:text="${row.positionName}" th:value="${row.positionId}">One</option>
+                            </th:block>
+                        </select>
+                    </div>
+                    <div class="form-group col-3">
+                        <label for="division" class="font-weight-bold">Loại Khách</label>
+                        <select class="custom-select" id="division" th:field="*{division}">
+                            <option value="null">-----select-----</option>
+                            <th:block th:each="row:${division}">
+                                <option th:text="${row.divisionName}" th:value="${row.divisionId}">One</option>
+                            </th:block>
+                        </select>
+                    </div>
+                    <div class="form-group col-3">
+                        <label for="educationDegree" class="font-weight-bold">Loại Khách</label>
+                        <select class="custom-select" id="educationDegree" th:field="*{educationDegree}">
+                            <option value="null">-----select-----</option>
+                            <th:block th:each="row:${educationDegree}">
+                                <option th:text="${row.educationName}" th:value="${row.educationId}">One</option>
+                            </th:block>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Thêm Mới</button>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="~{homepage/index::footer}">
+
+</footer>
+<script type="text/javascript">
+    $(document).ready(function (){
+        if($(".text-danger").text()!=""){
+            $(".text-danger").prev().attr('class','form-control input-false')
+        }
+        $("small").prev().blur(function() {
+            $(this).attr('class','form-control')
+            $(this).next().text("")
+        })
+    })
+</script>
+</body>
+
+</html>
