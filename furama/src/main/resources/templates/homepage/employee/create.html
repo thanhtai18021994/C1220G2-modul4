@@ -90,7 +90,7 @@
                         <small class="text-danger " th:if="${#fields.hasErrors('employeeGender')}" th:errors="*{employeeGender}"></small>
                     </div>
                     <div class="form-group col-3">
-                        <label for="position" class="font-weight-bold">Loại Khách</label>
+                        <label for="position" class="font-weight-bold">Chức Vụ</label>
                         <select class="custom-select" id="position" th:field="*{position}">
                             <option value="null">-----select-----</option>
                             <th:block th:each="row:${position}">
@@ -99,7 +99,7 @@
                         </select>
                     </div>
                     <div class="form-group col-3">
-                        <label for="division" class="font-weight-bold">Loại Khách</label>
+                        <label for="division" class="font-weight-bold">Bộ Phận</label>
                         <select class="custom-select" id="division" th:field="*{division}">
                             <option value="null">-----select-----</option>
                             <th:block th:each="row:${division}">
@@ -108,7 +108,7 @@
                         </select>
                     </div>
                     <div class="form-group col-3">
-                        <label for="educationDegree" class="font-weight-bold">Loại Khách</label>
+                        <label for="educationDegree" class="font-weight-bold">Bằng Cấp</label>
                         <select class="custom-select" id="educationDegree" th:field="*{educationDegree}">
                             <option value="null">-----select-----</option>
                             <th:block th:each="row:${educationDegree}">

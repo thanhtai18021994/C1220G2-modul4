@@ -47,7 +47,10 @@ public class ServiceController {
         String email=((UserDetails)principal).getUsername();
         User user=userService.findByEmail(email);
         cart.setUser(user);
+
         Pageable pageable1= PageRequest.of(pageable.getPageNumber(),5);
+        model.addAttribute("rentType",rentTypeService.findAll());
+        model.addAttribute("typeService",serviceTypeService.findAll());
         model.addAttribute("list",serviceService.findAll(pageable1));
         return "/homepage/service/homePage";
     }
@@ -55,7 +58,7 @@ public class ServiceController {
     public String getCreate(Model model){
         model.addAttribute("service",new EntityService());
         model.addAttribute("rentType",rentTypeService.findAll());
-        model.addAttribute("typeService",rentTypeService.findAll());
+        model.addAttribute("typeService",serviceTypeService.findAll());
         return "/homepage/service/create";
     }
 
@@ -77,5 +80,9 @@ public class ServiceController {
     public String detail(@PathVariable Integer id, Model model){
         model.addAttribute("object",serviceService.findById(id).get());
         return "/homepage/service/view";
+    }
+    @GetMapping("/search")
+    public String getSearch(){
+        return "/homepage/errorPage";
     }
 }

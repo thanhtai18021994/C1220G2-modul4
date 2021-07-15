@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{layout/header::header}">
-    <meta charset="UTF-8">
-    <title>Index</title>
-</head>
-<body>
-<div th:replace="~{layout/navbar::navbar}"></div>
-<div style="height: 100px"></div>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<aside class="d-flex justify-content-center align-items-center">
-    <div class="row">
-        <div class="col-12">
-            <h3>Bạn không có quyền vào trang này hoặc tài khoản của bạn đã bị khóa</h3>
-        </div>
-        <div class="col-12">
-            <a class="btn btn-outline-danger">Xin trợ giúp</a>
+<head th:replace="~{homepage/index::header}">
+
+</head>
+
+<body>
+<nav class="navbar navbar-dark bg-dark fixed-top"  th:replace="~{homepage/index::navbar}">
+</nav>
+<div class="container-fluid row p-0 m-0">
+    <div class="col-2 sidebar" style="padding: 0;" th:replace="~{homepage/index::sidebar}">
+    </div>
+    <div class="col-10 p-0 h-100">
+        <div class="container"><span style="font-size: 280px"><i class="fas fa-exclamation-triangle"></i></span></div>
+        <div class="container" style="display: flex;align-items: center;justify-content: center">
+            <h1>BẠN KHÔNG ĐỦ QUYỀN TRUY CẬP TRANG NÀY</h1>
         </div>
     </div>
+</div>
+<footer th:replace="~{homepage/index::footer}">
 
-</aside> <!-- col.// -->
-<div style="height: 100px"></div>
+</footer>
 
-
-<footer th:replace="~{layout/footer :: footer}"></footer>
 </body>
+
 </html>

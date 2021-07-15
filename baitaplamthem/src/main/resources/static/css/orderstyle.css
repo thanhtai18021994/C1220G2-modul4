@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+.navbars {
+    padding-top: 12px;
+    background-color: black;
+    color: white;
+    font-size: 12px;
+    width: 100%;
+}
+
+.navbar-title {
+    display: flex;
+    justify-content: space-around;
+}
+
+.navbar-contract span {
+    margin-right: 12px;
+}
+
+.navbar-contract span i {
+    color: #ccc;
+    padding: 0 8px;
+}
+
+.navbar-menu {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 12px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.navbar-menu li {
+    list-style: none;
+    padding: 0 24px;
+}
+
+.navbar-menu li a {
+    text-decoration: none;
+    font-size: 18px;
+    font-family: 'guccifont';
+    font-weight: 300;
+    color: white;
+}
+
+.navbar-cart {}
+
+.navbar-cart span {
+    margin-right: 12px;
+}
+
+.navbar-cart span i {
+    padding: 0 8px;
+}
+
+.app {
+    width: 100%;
+    padding: 20px;
+    margin: 20px auto 0;
+}
+
+.product-infor,
+.payment,
+.customer-infor {
+    width: 50%;
+    margin: 0 auto;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+}
+
+.product-infor__img {
+    width: 100%;
+}
+
+.product-content a {
+    font-size: 14px;
+    color: #333;
+}
+
+.product-content p {
+    font-size: 11px;
+    color: #333;
+}
+
+.quality-increment {
+    display: flex;
+    justify-content: left;
+}
+
+.quality-increment input {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border: none;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+    outline: none;
+}
+
+.quality-increment button {
+    width: 40px;
+    height: 40px;
+    outline: none;
+    color: #333;
+    font-size: 14px;
+    margin: 0;
+    border: 1px solid #ccc;
+}
+
+.payment-code_discount {
+    font-size: 14px;
+    font-weight: 300;
+    color: #288ad6;
+    padding-top: 12px;
+}
+
+.payment p {
+    font-size: 14px;
+    color: #333;
+    padding-top: 8px;
+}
+
+.payment input {
+    border: none;
+    outline: none;
+    text-align: right;
+}
+
+.customer-infor h4 {
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+}
+
+.customer-infor p span {
+    font-size: 14px;
+    color: #333;
+}
+
+.payment__submit {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.payment__submit button {
+    width: 100%;
+    border: none;
+    padding: 12px 0;
+    outline: none;
+    background: linear-gradient(180deg, #f79429, #f7712e);
+}

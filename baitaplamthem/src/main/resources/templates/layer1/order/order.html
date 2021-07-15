@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/fontawesome-free-5.15.1-web/fontawesome-free-5.15.1-web/css/all.min.css}">
+    <link rel="stylesheet" th:href="@{/bootstrap-4.6.0-dist/css/bootstrap.min.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/orderstyle.css}">
+</head>
+
+<body>
+    <header>
+        <nav class="navbars">
+            <div class="navbar-title">
+                <div class="navbar-contract">
+                    <span class="navbar-location"><i class="fas fa-map-marker-alt"></i><span>English</span></span>
+                    <span class="navbar-phone"><i class="fas fa-phone"></i><span>0775562914</span></span>
+                </div>
+                <div class="navbar-center">
+                    <ul class="navbar-menu">
+                        <li><a href="">HOME</a></li>
+                        <li>
+                            <a href="">LAPTOP</a>
+                        </li>
+                        <li>
+                            <a href="">PC COMPUTER</a>
+                        </li>
+                        <li>
+                            <a href="">WHAT'S NEW</a>
+                        </li>
+                        <li>
+                            <a href="">HELP</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar-cart">
+                    <span>Sing in</span>
+                    <span><i class="far fa-heart"></i></span>
+                    <span><i class="fas fa-shopping-bag"></i>Bag</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="app">
+        <form action="" method="POST">
+            <div class="product-infor row">
+                <div class="col-8 ">
+                    <div class="row">
+                        <div class="col-4">
+                            <img class="product-infor__img" src="./image/image-laptop/acer-aspire-7-a715-42g-r4st-r5-nhqaysv004-16-600x600.jpg" alt="">
+                            <a href="" class="ml-auto  d-block mt-3" style="width: fit-content; color: #333; font-size: 13px;font-weight: 200;"><span><i class="fas fa-trash-alt"></i></span>Xóa</a>
+                        </div>
+                        <div class="col-8 product-content">
+                            <a>Laptop HP 340s G7 i3 1005G1/4GB/256GB/Win10 (240Q4PA)
+                            </a>
+                            <p>Màu sám</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 ml-auto">
+                    <p class="ml-auto" style="width: fit-content;">16.400.000 <span>đ</span></p>
+                    <p class="ml-auto" style="width: fit-content;">20.000.000 <span>đ</span></p>
+                    <div style="width: fit-content;" class="quality-increment ml-auto">
+                        <button>-</button>
+                        <input type="text" value="1">
+                        <button>+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="payment">
+                <a class="payment-code_discount"><span><i class="fas fa-tag"></i></span> Sử dụng mã giảm giá</a>
+                <div class="row" style="padding: 0 20px;">
+                    <p class="mr-auto">Tạm Tính (1 sản phẩm)</p>
+                    <input type="text" value="20.000.000">
+                </div>
+                <div class="row" style="padding: 0 20px;">
+                    <p class="mr-auto"><strong>Tổng Tiền: </strong></p>
+                    <input type="text" value="20.000.000" style="color: red;">
+                </div>
+            </div>
+            <div class="customer-infor">
+                <h4>THÔNG TIN KHÁCH HÀNG</h4>
+                <p><span>Anh Dương</span> - <span class="pr-5">0775562914</span><a href="">Sửa</a></p>
+                <h4>CHỌN CÁCH THỨC NHẬN HÀNG</h4>
+                <label for=""><input type="radio" name="giaohang" class="pr-5">Giao hàng tận nơi</label>
+                <label for=""><input name="giaohang" type="radio">Nhận hàng tại shop</label>
+            </div>
+            <div class="payment__submit">
+                <button type="submit">ĐẶT HÀNG</button>
+            </div>
+        </form>
+    </div>
+    <script>
+    </script>
+</body>
+
+</html>

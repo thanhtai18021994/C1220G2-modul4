@@ -30,9 +30,9 @@
     <div class="container-fluid row p-0 m-0">
         <div class="col-2 sidebar " style="padding: 0;" th:fragment="sidebar">
             <header class="sidebar-header ">
-                <div class="sidebar-header-image"><img th:src="@{/image/download%20(5).jpg}" alt=""></div>
+                <div class="sidebar-header-image"><img th:src="@{/image/{image}(image=${cart.getUser().getImageAvatarOfUser()})}" alt=""></div>
                 <div class="sidebar-header-infor">
-                    <h6>Alexander Pierce</h6>
+                    <h6 th:text="${cart.getUser().fullName}">Alexander Pierce</h6>
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
             </header>

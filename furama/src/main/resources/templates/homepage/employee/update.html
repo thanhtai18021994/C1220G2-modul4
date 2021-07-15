@@ -21,42 +21,48 @@
             <button class="addnew"><a th:href="@{/customer}"><span><i class="fas fa-list"></i></span>Danh Sách Khách Hàng</a></button>
         </div>
         <div class="container-fluid mt-3" style="padding: 40px;">
-            <h4 class="font-weight-bold"> THÊM MỚI KHÁCH HÀNG</h4>
-            <form th:action="@{/customer/update}" method="post" th:object="${customer}" class="mt-3">
+            <h4 class="font-weight-bold"> CẬP NHẬP NHÂN VIÊN</h4>
+            <form th:action="@{/employee/update}" method="post" th:object="${employee}" class="mt-3">
+                <input type="hidden" th:field="*{user.id}">
+                <input type="hidden" th:field="*{employeeId}">
                 <div class="form-row">
-                    <div class="form-group col-6">
+                    <div class="form-group col-3">
                         <label for="inputCity" class="font-weight-bold">Họ Và Tên</label>
-                        <input type="text" class="form-control" id="inputCity" placeholder="VD:Nguyễn Văn A" th:value="*{customerName}" th:field="*{customerName}">
+                        <input type="text" class="form-control" id="inputCity" placeholder="VD:Nguyễn Văn A" th:value="*{employeeName}" th:field="*{employeeName}">
                     </div>
                     <div class="form-group col-3">
                         <label for="birthday" class="font-weight-bold">Ngày Sinh</label>
-                        <input type="date" class="form-control" id="birthday" th:value="*{customerBirthday}" th:field="*{customerBirthday}">
+                        <input type="date" class="form-control" id="birthday" th:value="*{employeeBirthday}" th:field="*{employeeBirthday}">
                     </div>
                     <div class="form-group col-3">
-                        <label for="code" class="font-weight-bold">Mã Khách Hàng</label>
-                        <input type="text" class="form-control" id="code" placeholder="VD: KH-0001" th:value="*{codeCustomer}" th:field="*{codeCustomer}">
+                        <label for="code" class="font-weight-bold">Mã Nhân Viên</label>
+                        <input type="text" class="form-control" id="code" placeholder="VD: KH-0001" th:value="*{codeEmployee}" th:field="*{codeEmployee}">
+                    </div>
+                    <div class="form-group col-3">
+                        <label for="image" class="font-weight-bold">Ảnh Đại Diện</label>
+                        <input readonly type="file" class="form-control" id="image" placeholder="VD: KH-0001" th:value="*{user.imageAvatarOfUser}" name="image">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="inputEmail4" class="font-weight-bold">Email</label>
-                        <input type="email" class="form-control" id="inputEmail4" placeholder="VD:taibui18021994@gmail.com" th:value="*{customerEmail}" th:field="*{customerEmail}">
+                        <input type="email" class="form-control" id="inputEmail4" placeholder="VD:taibui18021994@gmail.com" th:value="*{employeeEmail}" th:field="*{employeeEmail}">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="inputPassword4" class="font-weight-bold">Số Điện Thoại</label>
-                        <input type="text" class="form-control" id="inputPassword4" placeholder="VD:0775562914" th:value="*{customerPhone}" th:field="*{customerPhone}">
+                        <input type="text" class="form-control" id="inputPassword4" placeholder="VD:0775562914" th:value="*{employeePhone}" th:field="*{employeePhone}">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="idCard" class="font-weight-bold">Số CMND</label>
-                        <input type="text" class="form-control" id="idCard" placeholder="191830363" th:value="*{customerIdCard}" th:field="*{customerIdCard}">
+                        <input type="text" class="form-control" id="idCard" placeholder="191830363" th:value="*{employeeIdCard}" th:field="*{employeeIdCard}">
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-2 font-weight-bold">Giới Tính: </div>
                     <div class="form-check col-1">
-                        <th:block th:switch="${customer.customerGender}">
-                            <input th:case="Nam" checked class="form-check-input" type="radio" id="male" name="gender"  th:value="Nam" th:field="*{customerGender}">
-                            <input th:case="*" class="form-check-input" type="radio" id="male" name="gender"  th:value="Nam" th:field="*{customerGender}">
+                        <th:block th:switch="${employee.employeeGender}">
+                            <input th:case="Nam" checked class="form-check-input" type="radio" id="male" name="gender"  th:value="Nam" th:field="*{employeeGender}">
+                            <input th:case="*" class="form-check-input" type="radio" id="male" name="gender"  th:value="Nam" th:field="*{employeeGender}">
                         </th:block>
 
                         <label class="form-check-label" for="male">
@@ -64,18 +70,18 @@
                         </label>
                     </div>
                     <div class="form-check col-1 ">
-                        <th:block th:switch="${customer.customerGender}">
-                            <input th:case="Nữ" checked class="form-check-input" type="radio" id="female" name="gender"  th:value="Nữ" th:field="*{customerGender}">
-                            <input th:case="*" class="form-check-input" type="radio" id="female" name="gender"  th:value="Nữ" th:field="*{customerGender}">
+                        <th:block th:switch="${employee.employeeGender}">
+                            <input th:case="Nữ" checked class="form-check-input" type="radio" id="female" name="gender"  th:value="Nữ" th:field="*{employeeGender}">
+                            <input th:case="*" class="form-check-input" type="radio" id="female" name="gender"  th:value="Nữ" th:field="*{employeeGender}">
                         </th:block>
                         <label class="form-check-label " for="female">
                             Nữ
                         </label>
                     </div>
                     <div class="form-check col-1">
-                        <th:block th:switch="${customer.customerGender}">
-                            <input th:case="Khác" checked class="form-check-input" type="radio" id="other" name="gender" th:value="Khác" th:field="*{customerGender}">
-                            <input th:case="*" class="form-check-input" type="radio" id="other" name="gender"  th:value="Khác" th:field="*{customerGender}">
+                        <th:block th:switch="${employee.employeeGender}">
+                            <input th:case="Khác" checked class="form-check-input" type="radio" id="other" name="gender" th:value="Khác" th:field="*{employeeGender}">
+                            <input th:case="*" class="form-check-input" type="radio" id="other" name="gender"  th:value="Khác" th:field="*{employeeGender}">
                         </th:block>
                         <label class="form-check-label " for="other">
                             Khác
@@ -84,17 +90,39 @@
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group col-6">
+                    <div class="form-group col-3">
                         <label for="inputAddress" class="font-weight-bold">Address</label>
-                        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" th:value="${customer.customerAddress}" th:field="*{customerAddress}">
+                        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" th:value="${employee.employeeAddress}" th:field="*{employeeAddress}">
                     </div>
-                    <div class="form-group col-6">
-                        <label for="typeCustomer" class="font-weight-bold">Loại Khách</label>
-                        <select class="custom-select" id="typeCustomer" th:field="*{customerType}">
-                            <th:block th:each="row:${typeCustomer}">
-                                <th:block th:switch="${row.customerTypeName}">
-                                    <option selected th:case="${customer.customerType.customerTypeName}" th:text="${row.customerTypeName}" th:value="${row.customerTypeId}">One</option>
-                                    <option th:case="*" th:text="${row.customerTypeName}" th:value="${row.customerTypeId}">One</option>
+                    <div class="form-group col-3">
+                        <label for="typeCustomer" class="font-weight-bold">Chức Vụ</label>
+                        <select class="custom-select" id="typeCustomer" th:field="*{position}">
+                            <th:block th:each="row:${position}">
+                                <th:block th:switch="${row.positionName}">
+                                    <option selected th:case="${employee.position.positionName}" th:text="${row.positionName}" th:value="${row.positionId}">One</option>
+                                    <option th:case="*" th:text="${row.positionName}" th:value="${row.positionId}">One</option>
+                                </th:block>
+                            </th:block>
+                        </select>
+                    </div>
+                    <div class="form-group col-3">
+                        <label for="division" class="font-weight-bold">Chức Vụ</label>
+                        <select class="custom-select" id="division" th:field="*{division}">
+                            <th:block th:each="row:${division}">
+                                <th:block th:switch="${row.divisionName}">
+                                    <option selected th:case="${employee.division.divisionName}" th:text="${row.divisionName}" th:value="${row.divisionId}">One</option>
+                                    <option th:case="*" th:text="${row.divisionName}" th:value="${row.divisionId}">One</option>
+                                </th:block>
+                            </th:block>
+                        </select>
+                    </div>
+                    <div class="form-group col-3">
+                        <label for="education-degree" class="font-weight-bold">Chức Vụ</label>
+                        <select class="custom-select" id="education-degree" th:field="*{educationDegree}">
+                            <th:block th:each="row:${educationDegree}">
+                                <th:block th:switch="${row.educationName}">
+                                    <option selected th:case="${employee.educationDegree.educationName}" th:text="${row.educationName}" th:value="${row.educationId}">One</option>
+                                    <option th:case="*" th:text="${row.educationName}" th:value="${row.educationId}">One</option>
                                 </th:block>
                             </th:block>
                         </select>

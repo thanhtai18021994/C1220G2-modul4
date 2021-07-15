@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.*;
@@ -58,25 +59,31 @@ public class EmpoyeeController {
         if((name!=null||address!=null)&&position!=null&&division!=null){
             model.addAttribute("name",name);
             model.addAttribute("address",address);
-            model.addAttribute("position",position);
-            model.addAttribute("division",division);
+            model.addAttribute("position",position.getPositionId());
+            model.addAttribute("division",division.getDivisionId());
             model.addAttribute("positions",positionService.findAll());
             model.addAttribute("divisions",divisionService.findAll());
             model.addAttribute("list",employeeService.findByFourField(name, address, position, division, pageable));
         }else if ((name!=null||address!=null)&&division==null&&position!=null){
             model.addAttribute("name",name);
             model.addAttribute("address",address);
-            model.addAttribute("position",position);
+            model.addAttribute("position",position.getPositionId());
             model.addAttribute("positions",positionService.findAll());
             model.addAttribute("divisions",divisionService.findAll());
             model.addAttribute("list",employeeService.findByThreeFieldP(name, address, position, pageable));
         }else if ((name!=null||address!=null)&&division!=null&&position==null){
             model.addAttribute("name",name);
             model.addAttribute("address",address);
-            model.addAttribute("division",division);
+            model.addAttribute("division",division.getDivisionId());
             model.addAttribute("positions",positionService.findAll());
             model.addAttribute("divisions",divisionService.findAll());
             model.addAttribute("list",employeeService.findByThreeFieldD(name, address,division, pageable));
+        }else if((name!=null||address!=null)&&division==null&&position==null){
+            model.addAttribute("name",name);
+            model.addAttribute("address",address);
+            model.addAttribute("positions",positionService.findAll());
+            model.addAttribute("divisions",divisionService.findAll());
+            model.addAttribute("list",employeeService.findByTwoField(name, address, pageable));
         }else {
             model.addAttribute("positions",positionService.findAll());
             model.addAttribute("divisions",divisionService.findAll());
@@ -140,6 +147,48 @@ public class EmpoyeeController {
             employeeService.delete(customer.get());
             return "redirect:/employee";
         }
+        return "redirect:/employee";
+    }
+
+    @GetMapping("/update/{id}")
+    public String getUpdate(@PathVariable Integer id,Model model){
+        model.addAttribute("employee",employeeService.findById(id).get());
+        model.addAttribute("division",divisionService.findAll());
+        model.addAttribute("position",positionService.findAll());
+        model.addAttribute("educationDegree",educationDegreeService.findAll());
+        return "/homepage/employee/update";
+    }
+
+    @PostMapping ("/update")
+    public String update(Model model,
+                         @Valid @ModelAttribute("employee") Employee employee,BindingResult bindingResult,
+                         @RequestParam String image,
+                         RedirectAttributes redirectAttributes){
+        if(bindingResult.hasFieldErrors()){
+            model.addAttribute("division",divisionService.findAll());
+            model.addAttribute("position",positionService.findAll());
+            model.addAttribute("educationDegree",educationDegreeService.findAll());
+            return "/homepage/employee/update";
+        }
+        List<String> listRole =new ArrayList<>();
+        if("Quản lý".equals(employee.getPosition().getPositionName())||"Giám đốc".equals(employee.getPosition().getPositionName())){
+            listRole.add("ROLE_ADMIN");
+            listRole.add("ROLE_MEMBER");
+        }else {
+            listRole.add("ROLE_MEMBER");
+        }
+        User user=employee.getUser();
+        user.setImageAvatarOfUser(image);
+        user.setEmail(employee.getEmployeeEmail());
+        user.setPassword(EncrypPasswordUtils.EncrypPasswordUtils("123456"));
+        Set<Role> roles=new HashSet<>();
+        for (int i = 0; i <listRole.size() ; i++) {
+            roles.add(roleService.findByName(listRole.get(i)));
+        }
+        user.setRoles(roles);
+        userService.save(user);
+        employee.setUser(user);
+        employeeService.save(employee);
         return "redirect:/employee";
     }
 }

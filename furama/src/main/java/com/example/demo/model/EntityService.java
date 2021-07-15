@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import java.util.Set;
 
@@ -22,10 +23,11 @@ public class EntityService {
     @Column(name = "service_id")
     private Integer serviceId;
     @Pattern(regexp = "^DV-\\d{4}$",message = "DV-xxxx x là số 0-9")
-    private Integer codeService;
+    private String codeService;
+    @NotBlank
     private String serviceName;
     @Min(1)
-    private Integer serviceArea;
+    private Double serviceArea;
     @Min(1)
     private Double serviceCost;
     @Min(1)

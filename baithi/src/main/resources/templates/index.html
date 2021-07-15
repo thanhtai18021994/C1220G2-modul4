@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/bootstrap-4.6.0-dist/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/fontawesome-free-5.15.1-web/fontawesome-free-5.15.1-web/css/all.min.css}">
+</head>
+
+<body>
+<div class="container mt-3">
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-brand" href="#">HOME</a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link 1</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link 2</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link 2</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container-fluid" >
+        <form th:action="@{/}">
+            <div class="form-row">
+                <div class="form-group col-3">
+                    <label for="inputCity" class="font-weight-bold">Gia</label>
+                    <input type="text" class="form-control" id="inputCity" name="giamgia" placeholder="VD: 12000">
+                </div>
+                <div class="form-group col-3">
+                    <label for="birthday" class="font-weight-bold">Ngay bat dau</label>
+                    <input type="text" class="form-control" id="birthday" name="ngay1" placeholder="VD: 0912662661">
+                </div>
+                <div class="form-group col-3">
+                    <label for="code" class="font-weight-bold">Ngay Ket thuc</label>
+                    <input type="text" class="form-control" id="code" name="ngay2" placeholder="VD: Đà Nẵng">
+                </div>
+            </div>
+            <div class="form-row">
+                <button type="submit" class="btn bg-primary col-1" style="color: white"> Tìm Kiếm</button>
+            </div>
+        </form>
+    </div>
+    <div>
+        <button class="btn bg-light"><a th:href="@{/create}">Tao moi khuyen mai</a></button>
+        <button class="btn bg-light"> <a th:href="@{/}">Danh Sach</a></button>
+    </div>
+    <div class="container mt-3">
+        <h2>DANH SÁCH KHUYẾN MÃI</h2>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Tieu De</th>
+                    <th>Thoi Gian Bat Dau</th>
+                    <th>Thoi Gian Ket Thuc</th>
+                    <th>Muc giam gia</th>
+                    <th>Chi Tiet</th>
+                    <th>Xoa</th>
+                    <th>Sua</th>
+                </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="row:${list}">
+                <tr>
+                    <td th:text="${row.tieuDeKhuyenMai}"></td>
+                    <td th:text="${row.thoiGianBatDau}">John</td>
+                    <td th:text="${row.thoiGianKetThuc}">Doe</td>
+                    <td th:text="${row.mucGiamGia}">john@example.com</td>
+                    <td th:text="${row.chiTiet}">john@example.com</td>
+                    <td ><button class="bg-primary"><a th:href="@{update/{id}(id=${row.maKhuyenMai})}"><span><i class="fas fa-user-edit "></i></span>Sửa</a></button></td>
+                    <td > <button class="bg-danger"><a class="deletecustomer" th:data-delete="${row.maKhuyenMai}" ><span><i class="fas fa-trash-alt"></i></span>Xóa</a></button></td>
+                </tr>
+            </th:block>
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="container">
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">WARNING</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    Bạn có muốn xóa không ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary"><a id="agreedelete" href="#" style="color: white;text-decoration: none">Đồng ý</a></button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Thoát</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--    <script th:src="@{/jquery/jquery-3.6.0.min.js}"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script th:src="@{/bootstrap-4.6.0-dist/js/bootstrap.min.js}"></script>
+<script src=""></script>
+    <script th:inline="javascript">
+        $(document).ready(function (){
+            $('.deletecustomer').click(function (){
+                var id=$(this).data("delete");
+                console.log(id);
+                $('#agreedelete').attr('href',`http://localhost:8080/delete/${id}`);
+                var name=$(this).parent().parent().parent().children().eq(1).text();
+                $("#myModal").modal("show");
+                $(".modal-body").text(`bạn có muốn xóa khách hàng ${name}`);
+            })
+        })
+    </script>
+</body>
+
+</html>

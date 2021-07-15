@@ -134,3 +134,18 @@ h1 {
 .bubbles img:nth-child(7) {
     animation-delay: 7s;
 }
+.discover button{
+    cursor: pointer;
+    padding: 10px 25px;
+    background: transparent;
+    border: 1px solid #fff;
+    outline: none;
+    z-index: 2;
+}
+
+.discover button a{
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+
+}

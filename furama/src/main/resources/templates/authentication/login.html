@@ -15,7 +15,6 @@
     <div class="center">
         <h1 class="title">Login</h1>
         <form th:action="@{/login}" method="post">
-            <p th:if="${param.error}" class="text-danger" style="text-align: center">Đăng nhập thất bại</p>
             <div class="text_field">
                 <input type="text" required name="email">
                 <span></span>
@@ -26,6 +25,7 @@
                 <span></span>
                 <label >Password</label>
             </div>
+            <p th:if="${param.error}"  style="text-align: center;color: #de0a0a">Đăng nhập thất bại</p>
             <div class="pass"> <input type="checkbox" name="remember-me"> Nhớ tài khoản</div>
             <input type="submit" value="Submit">
         </form>

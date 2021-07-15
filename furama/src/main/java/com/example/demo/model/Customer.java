@@ -10,6 +10,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.util.Set;
 
@@ -33,9 +35,10 @@ public class Customer {
     private String customerGender;
     @Pattern(regexp = "^(\\d{9})|(\\d{12})$",message = "(xxxxxxxxx)|(xxxxxxxxxxxx) x là số 0-9")
     private String customerIdCard;
+    @NotNull
     @Phone
     private String customerPhone;
-    @Email
+    @Email(message = "email không đúng định dạng !!")
     private String customerEmail;
     @Pattern(regexp = "([\\p{Lu}][\\p{Ll}]{1,8})(\\s([\\p{Lu}]|[\\p{Lu}][\\p{Ll}]{1,10})){0,5}$",message = "Viet hoa chu cai dau tien !!!")
     private String customerAddress;

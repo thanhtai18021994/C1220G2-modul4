@@ -24,6 +24,7 @@
             <h4 class="font-weight-bold"> THÊM MỚI KHÁCH HÀNG</h4>
             <form th:action="@{/customer/update}" method="post" th:object="${customer}" class="mt-3">
                 <div class="form-row">
+                    <input type="hidden" name="" th:field="*{customerId}">
                     <div class="form-group col-6">
                         <label for="inputCity" class="font-weight-bold">Họ Và Tên</label>
                         <input type="text" class="form-control" id="inputCity" placeholder="VD:Nguyễn Văn A" th:value="*{customerName}" th:field="*{customerName}">

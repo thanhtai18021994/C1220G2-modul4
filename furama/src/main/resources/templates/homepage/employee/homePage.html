@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="container-fluid" style="padding: 0px 40px 20px;">
-            <form action="/customer">
+            <form th:action="@{/employee}">
                 <div class="form-row">
                     <div class="form-group col-3">
                         <label for="inputCity" class="font-weight-bold">Họ Và Tên</label>
@@ -35,18 +35,18 @@
                     </div>
                     <div class="form-group col-3">
                         <label for="position" class="font-weight-bold">Chức Vụ</label>
-                        <select class="custom-select" id="position" name="typeCustomer">
+                        <select class="custom-select" id="position" name="position">
                             <option th:value="null">----Select----</option>
-                            <th:block th:each="row:${position}">
+                            <th:block th:each="row:${positions}">
                                 <option th:text="${row.positionName}" th:value="${row.positionId}">One</option>
                             </th:block>
                         </select>
                     </div>
                     <div class="form-group col-3">
                         <label for="typeCustomer" class="font-weight-bold">Bộ Phận</label>
-                        <select class="custom-select" id="typeCustomer" name="typeCustomer">
+                        <select class="custom-select" id="typeCustomer" name="division">
                             <option th:value="null">----Select----</option>
-                            <th:block th:each="row2:${division}">
+                            <th:block th:each="row2:${divisions}">
                                 <option th:text="${row2.divisionName}" th:value="${row2.divisionId}">One</option>
                             </th:block>
                         </select>
@@ -60,7 +60,7 @@
 
         <div class="row container-fluid table-responsive " style="padding: 0px 40px 20px;">
             <h4>DANH SÁCH NHÂN VIÊN</h4>
-            <table class="table table-bordered mytable">
+            <table class="table table-bordered table-hover mytable">
                 <thead class="thead-light">
                 <tr>
                     <th>STT</th>
@@ -87,24 +87,42 @@
                         <td th:text="${row.position.positionName}"> Doe</td>
                         <td ><button class="bg-info"><a th:href="@{/employee/view/{id}(id=${row.employeeId})}"><span><i class="fas fa-eye"></i></span> Chi tiết</a></button></td>
                         <td ><button class="bg-primary"><a th:href="@{/employee/update/{id}(id=${row.employeeId})}"><span><i class="fas fa-user-edit "></i></span>Sửa</a></button></td>
-                        <td > <button class="bg-danger"><a class="deletecustomer" th:href="${row.employeeId}"><span><i class="fas fa-trash-alt"></i></span>Xóa</a></button></td>
+                        <td > <button class="bg-danger"><a class="deletecustomer" th:data-delete="${row.employeeId}"><span><i class="fas fa-trash-alt"></i></span>Xóa</a></button></td>
                     </tr>
                 </th:block>
                 </tbody>
             </table>
         </div>
-        <div class="container-fluid row">
-            <div class="bg-light button-pageable ">
-                <table>
-                    <tr>
-                        <td><a th:href="@{'/employee'(page=${list.number-1},name=${name},address=${address},position=${position},division=${division})}" >Previous</a></td>
-                        <td th:if="${(list.number+1)<=list.totalPages}"><a th:href="@{'/employee'(page=${list.number+1},name=${name},address=${address},position=${position},division=${division})}" th:text="${list.number+1}">1</a></td>
-                        <td th:if="${(list.number+2)<=list.totalPages}"><a th:href="@{'/employee'(page=${list.number+2},name=${name},address=${address},position=${position},division=${division})}" th:text="${list.number+2}">2</a></td>
-                        <td th:if="${(list.number+3)<=list.totalPages}"><a th:href="@{'/employee'(page=${list.number+3},name=${name},address=${address},position=${position},division=${division})}" th:text="${list.number+3}">3</a></td>
-                        <td><a th:href="@{'/employee'(page=${list.number+1},name=${name},address=${address},position=${position},division=${division})}">Next</a></td>
-                    </tr>
-                </table>
-            </div>
+
+        <div class="container-fluid">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" th:href="@{'/employee'(page=${list.number-1},name=${name},address=${address},position=${position},division=${division})}" aria-label="Previous" th:if="${list.hasPrevious()}">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                        <span class="page-link"  aria-label="Previous" th:unless="${list.hasPrevious()}">
+                            <span aria-hidden="true">&laquo;</span>
+                        </span>
+                    </li>
+                    <th:block th:each="i:${#numbers.sequence(1,list.totalPages)}">
+                        <li class="page-item" >
+                            <a class="page-link" href="#" th:if="${i!=(list.number+1)}" th:href="@{'/employee'(page=${i},name=${name},address=${address},position=${position},division=${division})}">[[${i}]]</a>
+                        </li>
+                        <li class="page-item" >
+                            <span class="page-link" href="#" th:unless="${i!=(list.number+1)}">[[${i}]]</span>
+                        </li>
+                    </th:block>
+                    <li class="page-item">
+                        <a class="page-link" aria-label="Next" th:if="${list.hasNext()}" th:href="@{'/employee'(page=${list.number+1},name=${name},address=${address},position=${position},division=${division})}" >
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                        <span class="page-link" aria-label="Next" th:unless="${list.hasNext()}">
+                            <span aria-hidden="true">&raquo;</span>
+                        </span>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -132,18 +150,16 @@
 
 </footer>
 <script th:inline="javascript">
-    // var nameJs=/*[[${message}]]*/;
-    // var id=/*[[${id}]]*/;
-    // var id=$(".deletecustomer").attr("href");
+
     $(document).ready(function (){
-        $('.deletecustomer').click(function (e){
-            var id=$(this).attr('href');
-            $('#agreedelete').attr('href',`http://localhost:8080/customer/delete/${id}`);
-            var nameCustomer=$(this).parent().parent().children()[2].innerText;
-            var codeCustomer=$(this).parent().parent().children()[1].innerText;
+        $('.deletecustomer').click(function (){
+            var id=$(this).data("delete");
+            console.log(id);
+            $('#agreedelete').attr('href',`http://localhost:8080/employee/delete/${id}`);
+            var nameCustomer=$(this).parent().parent().parent().children().eq(2).text();
+            var codeCustomer=$(this).parent().parent().parent().children().eq(1).text();
             $("#myModal").modal("show");
-            $(".modal-body").text(`bạn có muốn xóa nhân viên [${codeCustomer} ] ${nameCustomer}`);
-            e.preventDefault();
+            $(".modal-body").text(`bạn có muốn xóa khách hàng [${codeCustomer} ] ${nameCustomer}`);
         })
     })
 </script>

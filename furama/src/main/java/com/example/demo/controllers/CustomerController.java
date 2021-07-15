@@ -48,7 +48,7 @@ public class CustomerController {
                            @RequestParam(required = false) String name,
                            @RequestParam(required = false) String address,
                            @RequestParam(required = false) String phone,
-                           @RequestParam(required = false) CustomerType typeCustomer,
+                           @RequestParam(name = "typeCustomer",required = false) CustomerType typeCustomer,
                            @SessionAttribute("cart") Cart cart) {
         Object principal= SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String email=((UserDetails)principal).getUsername();
@@ -59,8 +59,8 @@ public class CustomerController {
             model.addAttribute("name",name);
             model.addAttribute("address",address);
             model.addAttribute("phone",phone);
-            model.addAttribute("customertype",typeCustomer);
-            model.addAttribute("typeCustomer",typeCustomerService.findAll());
+            model.addAttribute("typeCustomer",typeCustomer.getCustomerTypeId());
+            model.addAttribute("typeCustomerList",typeCustomerService.findAll());
             Page<Customer> list=customerService.findAllField(name,address,phone,typeCustomer,pageable1);
             model.addAttribute("list",list);
             return "/homepage/customer/homePage";
@@ -68,12 +68,12 @@ public class CustomerController {
             model.addAttribute("name",name);
             model.addAttribute("address",address);
             model.addAttribute("phone",phone);
-            model.addAttribute("typeCustomer",typeCustomerService.findAll());
+            model.addAttribute("typeCustomerList",typeCustomerService.findAll());
             Page<Customer> list=customerService.findByNameAndAddressAndPhone(name,address,phone,pageable1);
             model.addAttribute("list",list);
             return "/homepage/customer/homePage";
         }
-            model.addAttribute("typeCustomer",typeCustomerService.findAll());
+            model.addAttribute("typeCustomerList",typeCustomerService.findAll());
             model.addAttribute("list",customerService.findAll(pageable1));
         return "/homepage/customer/homePage";
     }

@@ -44,12 +44,12 @@
                 <div class="form-row">
                     <div class="form-group col-3">
                         <label for="inputEmail4" class="font-weight-bold">Số Người Tối Đa</label>
-                        <input type="email" class="form-control" id="inputEmail4" placeholder="VD:taibui18021994@gmail.com" th:field="*{serviceMaxPeople}">
+                        <input type="text" class="form-control" id="inputEmail4" placeholder="VD:4" th:field="*{serviceMaxPeople}">
                         <small class="text-danger" th:if="${#fields.hasErrors('serviceMaxPeople')}" th:errors="*{serviceMaxPeople}"></small>
                     </div>
                     <div class="form-group col-3">
                         <label for="inputPassword4" class="font-weight-bold">Tiêu Chuẩn</label>
-                        <input type="text" class="form-control" id="inputPassword4" placeholder="VD:0775562914" th:field="*{standardRoom}">
+                        <input type="text" class="form-control" id="inputPassword4" placeholder="VD:5 sao" th:field="*{standardRoom}">
                         <small class="text-danger " th:if="${#fields.hasErrors('standardRoom')}" th:errors="*{standardRoom}"></small>
                     </div>
                     <div class="form-group col-3">
@@ -67,7 +67,7 @@
                 <div class="form-row">
                     <div class="form-group col-4">
                         <label for="birthday" class="font-weight-bold">Giá</label>
-                        <input type="date" class="form-control" id="birthday" th:field="*{serviceCost}">
+                        <input type="text" class="form-control" id="birthday" th:field="*{serviceCost}">
                         <small class="text-danger " th:if="${#fields.hasErrors('serviceCost')}" th:errors="*{serviceCost}"></small>
                     </div>
                     <div class="form-group col-4">
